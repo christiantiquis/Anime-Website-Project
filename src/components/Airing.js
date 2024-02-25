@@ -1,23 +1,22 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { useGlobalContext } from '../context/global'
 import Sidebar from './Sidebar'
 
-function Airing({rendered}) {
-    const {airingAnime ,isSearch, searchResults} = useGlobalContext()
+function Airing({ rendered }) {
+    const { airingAnime, isSearch, searchResults } = useGlobalContext()
 
     const conditionalRender = () => {
-        if(!isSearch && rendered === 'airing'){
+        if (!isSearch && rendered === 'airing') {
             return airingAnime?.map((anime) => {
                 return <Link to={`/anime/${anime.mal_id}`} key={anime.mal_id}>
-                    <img src={anime.images.jpg.large_image_url} alt="" />
+                    <img src={anime.images.jpg.large_image_url} alt={`/anime/${anime.mal_id}`} />
                 </Link>
             })
-        }else{
+        } else {
             return searchResults?.map((anime) => {
                 return <Link to={`/anime/${anime.mal_id}`} key={anime.mal_id}>
-                    <img src={anime.images.jpg.large_image_url} alt="" />
+                    <img src={anime.images.jpg.large_image_url} alt={`/anime/${anime.mal_id}`} />
                 </Link>
             })
         }

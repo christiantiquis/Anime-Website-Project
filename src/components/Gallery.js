@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { useGlobalContext } from '../context/global';
@@ -8,14 +8,13 @@ function Gallery() {
     const { id } = useParams();
 
     //state
-    const [index, setIndex] = React.useState(0);
+    const [index, setIndex] = useState(0);
 
     const handleImageClick = (i) => {
         setIndex(i)
     }
 
-
-    React.useEffect(() => {
+    useEffect(() => {
         getAnimePictures(id)
     }, [id])
 

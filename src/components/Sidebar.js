@@ -1,13 +1,12 @@
-import React from 'react'
 import { Link } from 'react-router-dom';
-import styled from 'styled-components'
+import styled from 'styled-components';
 import { useGlobalContext } from '../context/global';
 
 
 function Sidebar() {
-    const {popularAnime} = useGlobalContext()
+    const { popularAnime } = useGlobalContext()
 
-    const sorted = popularAnime?.sort((a,b) => {
+    const sorted = popularAnime?.sort((a, b) => {
         return b.score - a.score
     })
 
@@ -15,9 +14,9 @@ function Sidebar() {
         <SidebarStyled>
             <h3>Top 5 Popular</h3>
             <div className="anime">
-                {sorted?.slice(0,5).map((anime) => {
+                {sorted?.slice(0, 5).map((anime) => {
                     return <Link to={`/anime/${anime.mal_id}`} key={anime.mal_id}>
-                        <img src={anime.images.jpg.large_image_url} alt="" />
+                        <img src={anime.images.jpg.large_image_url} alt={`/anime/${anime.mal_id}`} />
                         <h5>
                             {anime.title}
                         </h5>

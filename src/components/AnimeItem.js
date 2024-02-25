@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 function AnimeItem() {
-
-
   const baseURL = "https://api.jikan.moe/v4/anime/"
 
   const { id } = useParams();
-  console.log(id);
 
   //state
   const [anime, setAnime] = useState({});
@@ -28,7 +25,6 @@ function AnimeItem() {
     const response = await fetch(`${baseURL}${anime}`)
     const data = await response.json();
     setAnime(data.data);
-    console.log(data.data);
   }
 
   //get characters
@@ -36,7 +32,6 @@ function AnimeItem() {
     const response = await fetch(`${baseURL}${anime}/characters`);
     const data = await response.json();
     setCharacters(data.data);
-    // console.log(data.data);
   }
 
   useEffect(() => {
@@ -94,7 +89,7 @@ function AnimeItem() {
           const { images, name, mal_id } = character.character
           return <Link to={`/character/${mal_id}`} key={index}>
             <div className="character">
-              <img src={images?.jpg.image_url} alt="" />
+              <img src={images?.jpg.image_url} alt={`/character/${mal_id}`} />
               <h4>{name}</h4>
               <p>{role}</p>
             </div>
@@ -114,6 +109,7 @@ const AnimeItemStyled = styled.div`
         margin-bottom: 1.5rem;
         cursor: pointer;
         background:linear-gradient( to right, #A855F7, #27AE60);
+        background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         transition: all .4s ease-in-out;
@@ -127,6 +123,7 @@ const AnimeItemStyled = styled.div`
         font-size: 2rem;
         cursor: pointer;
         background:linear-gradient( to right, #A855F7 23%, #27AE60);
+        background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
@@ -215,6 +212,5 @@ const AnimeItemStyled = styled.div`
         }
     }
 `;
-
 
 export default AnimeItem

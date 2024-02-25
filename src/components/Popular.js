@@ -1,8 +1,7 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
-import { useGlobalContext } from '../context/global'
-import Sidebar from './Sidebar'
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { useGlobalContext } from '../context/global';
+import Sidebar from './Sidebar';
 
 function Popular() {
   const { popularAnime, isSearch, searchResults } = useGlobalContext();
@@ -10,15 +9,14 @@ function Popular() {
   const conditionalRender = () => {
     if (!isSearch) {
       return popularAnime.map((anime) => {
-        //console.log(anime)
         return <Link to={`/anime/${anime.mal_id}`} key={anime.mal_id}>
-          <img src={anime.images.jpg.large_image_url} alt={anime.mal_id} />
+          <img src={anime.images.jpg.large_image_url} alt={`/anime/${anime.mal_id}`} />
         </Link>
       })
     } else {
       return searchResults?.map((anime) => {
         return <Link to={`/anime/${anime.mal_id}`} key={anime.mal_id}>
-          <img src={anime.images.jpg.large_image_url} alt="" />
+          <img src={anime.images.jpg.large_image_url} alt={`/anime/${anime.mal_id}`} />
         </Link>
       })
     }
