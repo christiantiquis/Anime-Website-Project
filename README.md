@@ -68,3 +68,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+This Project is from a tutorial video.
+
+Link to video: https://www.youtube.com/watch?v=qOhyFgE-8gY
+
+Repository: https://github.com/Maclinz/anime-database
